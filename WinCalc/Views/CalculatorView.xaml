@@ -1,0 +1,92 @@
+﻿<Window x:Class="WinCalc.Views.CalculatorView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        WindowStartupLocation="CenterScreen"
+        xmlns:local="clr-namespace:WinCalc.Views"
+        mc:Ignorable="d"
+        Title="Calculator" Height="320" Width="223"
+        Background="LightGray"
+        ResizeMode="NoResize">
+    <Window.Resources>
+        <ResourceDictionary>
+            <LinearGradientBrush x:Key="ButtonBackground" StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#FFD9EDFF" Offset="0"/>
+                <GradientStop Color="#FFC0DEFF" Offset="0.445"/>
+                <GradientStop Color="#FFAFD1F8" Offset="0.53"/>
+            </LinearGradientBrush>
+            <Style TargetType="{x:Type Button}" x:Key="DefaultButtonStyle">
+                <Setter Property="Background" Value="{StaticResource ButtonBackground}"/>
+                <Setter Property="Margin" Value="2"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="Command" Value="{Binding ButtonPressedCommand}"/>
+                <Setter Property="CommandParameter" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Content}"/>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32"></RowDefinition>
+            <RowDefinition Height="32"></RowDefinition>
+            <RowDefinition Height="32"></RowDefinition>
+            <RowDefinition Height="32"></RowDefinition>
+            <RowDefinition Height="32"></RowDefinition>
+            <RowDefinition Height="32"></RowDefinition>
+            <RowDefinition Height="32"></RowDefinition>
+            <RowDefinition Height="32"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <TextBox Grid.Row="0" Grid.ColumnSpan="6" Text="{Binding TextExpression}"
+                 FontSize="13" TextAlignment="Right" IsReadOnly="True"
+                 HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                 BorderThickness="1,1,1,0">
+        </TextBox>
+        <TextBox Grid.Row="1" Grid.ColumnSpan="6" Text="{Binding CurrentInput}"
+                 FontSize="20" TextAlignment="Right" IsReadOnly="True"
+                 HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                 FontWeight="Bold" BorderThickness="1,0,1,1">
+        </TextBox>
+
+        <Button Grid.Row="2" Grid.Column="0" Style="{StaticResource DefaultButtonStyle}">MC</Button>
+        <Button Grid.Row="2" Grid.Column="1" Style="{StaticResource DefaultButtonStyle}">MR</Button>
+        <Button Grid.Row="2" Grid.Column="2" Style="{StaticResource DefaultButtonStyle}">MS</Button>
+        <Button Grid.Row="2" Grid.Column="3" Style="{StaticResource DefaultButtonStyle}">M+</Button>
+        <Button Grid.Row="2" Grid.Column="4" Style="{StaticResource DefaultButtonStyle}">M-</Button>
+
+        <Button Grid.Row="3" Grid.Column="0" Style="{StaticResource DefaultButtonStyle}">&lt;-</Button>
+        <Button Grid.Row="3" Grid.Column="1" Style="{StaticResource DefaultButtonStyle}">CE</Button>
+        <Button Grid.Row="3" Grid.Column="2" Style="{StaticResource DefaultButtonStyle}">C</Button>
+        <Button Grid.Row="3" Grid.Column="3" Style="{StaticResource DefaultButtonStyle}">±</Button>
+        <Button Grid.Row="3" Grid.Column="4" Style="{StaticResource DefaultButtonStyle}">√</Button>
+        
+        <Button Grid.Row="4" Grid.Column="0" Style="{StaticResource DefaultButtonStyle}">7</Button>
+        <Button Grid.Row="4" Grid.Column="1" Style="{StaticResource DefaultButtonStyle}">8</Button>
+        <Button Grid.Row="4" Grid.Column="2" Style="{StaticResource DefaultButtonStyle}">9</Button>
+        <Button Grid.Row="4" Grid.Column="3" Style="{StaticResource DefaultButtonStyle}">/</Button>
+        <Button Grid.Row="4" Grid.Column="4" Style="{StaticResource DefaultButtonStyle}">x^2</Button>
+
+        <Button Grid.Row="5" Grid.Column="0" Style="{StaticResource DefaultButtonStyle}">4</Button>
+        <Button Grid.Row="5" Grid.Column="1" Style="{StaticResource DefaultButtonStyle}">5</Button>
+        <Button Grid.Row="5" Grid.Column="2" Style="{StaticResource DefaultButtonStyle}">6</Button>
+        <Button Grid.Row="5" Grid.Column="3" Style="{StaticResource DefaultButtonStyle}">*</Button>
+        <Button Grid.Row="5" Grid.Column="4" Style="{StaticResource DefaultButtonStyle}">1/x</Button>
+
+        <Button Grid.Row="6" Grid.Column="0" Style="{StaticResource DefaultButtonStyle}">1</Button>
+        <Button Grid.Row="6" Grid.Column="1" Style="{StaticResource DefaultButtonStyle}">2</Button>
+        <Button Grid.Row="6" Grid.Column="2" Style="{StaticResource DefaultButtonStyle}">3</Button>
+        <Button Grid.Row="6" Grid.Column="3" Style="{StaticResource DefaultButtonStyle}">-</Button>
+        <Button Grid.Row="6" Grid.Column="4" Grid.RowSpan="2" Style="{StaticResource DefaultButtonStyle}">=</Button>
+
+        <Button Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource DefaultButtonStyle}">0</Button>
+        <Button Grid.Row="7" Grid.Column="2" Style="{StaticResource DefaultButtonStyle}">.</Button>
+        <Button Grid.Row="7" Grid.Column="3" Style="{StaticResource DefaultButtonStyle}">+</Button>
+    </Grid>
+</Window>
